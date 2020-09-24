@@ -60,7 +60,7 @@ void single_step(	const int itimestep,
 //	av 			: Monaghan average velocity 				[out]
  //----------------------------------------------------------------------------
 
-	int nvirt, niac, pair_i(max_interaction) ,pair_j(max_interaction), ns(maxn);
+	int nvirt, niac, pair_i(max_interaction), pair_j(max_interaction), ns(maxn);
 
 	double w(max_interaction), dwdx(dim,max_interaction),indvxdt(dim,maxn),exdvxdt(dim,maxn),ardvxdt(dim,maxn),avdudt(maxn), ahdudt(maxn), c(maxn), eta(maxn);
 

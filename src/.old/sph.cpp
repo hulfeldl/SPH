@@ -10,34 +10,22 @@
 
 #include <iostream>
 
-#include "param.inc"
+#include "../.old/param.inc"
+#include "../.old/time_elapsed.cpp"
+#include "../.old/time_integration.cpp"
+#include "../.old/time_print.cpp"
 #include "input.cpp"
-#include "time_print.cpp"
-#include "time_elapsed.cpp"
-#include "time_integration.cpp"
 #include "output.cpp"
 
 
-void SPH(	double mass[],
-			int ntotal,
-			const double dt,
-			int itype[],
-			double x[][],
-			double vx[][],
-			double rho[],
-			double p[],
-			double u[],
-			double hsml[],
-			double c[],
-			double s[],
-			double e[] ){
+void SPH(){
 
 //----------------------------------------------------------------------------
 // 	This is a three dimensional SPH code, the followings are the
 // 	basic parameters needed in this code or calculated by this code
 
 // 	mass	: mass of particles							[in]
-//	ntotal	: total particle number ues					[in]
+//	ntotal	: total particle number						[in]
 //	dt		: Time step used in the time integration	[in]
 // 	itype	: types of particles						[in]
 // 	x		: coordinates of particles					[in/out]
@@ -51,6 +39,19 @@ void SPH(	double mass[],
 //	e		: total energy of particles					[out]
 //----------------------------------------------------------------------------
 
+	double mass[];
+	int ntotal;
+	double dt;
+	int itype[];
+	double x[][];
+	double vx[][];
+	double rho[];
+	double p[];
+	double u[];
+	double hsml[];
+	double c[];
+	double s[];
+	double e[];
 
 	int maxtimestep, d, m, i, yesorno;
 
@@ -69,7 +70,9 @@ void SPH(	double mass[],
 	input(x, vx, mass, rho, p, u, itype, hsml, ntotal);
 
 	yesorno = 1;
+
 	while(yesorno){
+
 		std::cout << "***************************************************" << std::endl;
 		std::cout << "        Please input the maximal time steps 		 " << std::endl;
 		std::cout << "***************************************************" << std::endl;

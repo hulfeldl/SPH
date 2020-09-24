@@ -72,7 +72,7 @@ int skf = 1;
 // 						false: 	No use of vritual particle.
 // vp_input = 			true: 	Load virtual particle information,
 // 						false: 	Generate virtual particle information.
-// vise = 				true: 	Consider viscosity,
+// visc = 				true: 	Consider viscosity,
 // 						false: 	No viscosity.
 // ex_force = 			true: 	Consider external force,
 // 						false: 	No external force.

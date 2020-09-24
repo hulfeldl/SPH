@@ -47,7 +47,7 @@ void h_upgrade( const double dt,
 	else if(sle == 1){
 		fac = 2.0;
 		for(int i = 0; i < ntotal; i++){
-			hsml(i) = fac*(pow( (mass(i)/rho(i)), (1.0/double(dim)) ));
+			hsml(i) = fac*( pow( mass(i)/rho(i) , 1.0/double(dim) ) );
 		}
 	}
 	else if (sle == 2){

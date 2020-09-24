@@ -40,7 +40,7 @@ void sum_density(	const int ntotal,
 
 
 	// wi(maxn) --- integration'of the kernel itself
-	for( int d = 0; d < dim; d++)
+	for( int d = 0; d < dim; d++){
 		hv(d) = .0;
 	}
 
@@ -98,7 +98,7 @@ void con_density(	const int ntotal,
 					double drhodt[]){
 
 //----------------------------------------------------------------------------
-// 	Subroutine to calculate 'the density with SPH continuiity approach.
+// 	Subroutine to calculate 'the density with SPH continuity approach.
 
 // 	ntotal	: Number of particles 								[in]
 // 	mass	: Particle masses 									[in]

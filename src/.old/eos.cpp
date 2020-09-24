@@ -9,7 +9,7 @@
 
 
 #include <cmath>
-#include <math>
+#include <math.h>
 
 void p_gas(	const double rho,
 			const double u,
@@ -54,7 +54,7 @@ void p_art_water(	const double rho,
 	gamma	= 7.0;
 	rho0 	= 1000.0;
 	b 		= 1.013e5;
-	p 		= b*( std::pow(rho/rho0,gamma) - 1);
+	p 		= b*( pow(rho/rho0,gamma) - 1);
 	c 		= 1480;
 
 	// Artificial EOS, Form 2 (Morris, 1997)

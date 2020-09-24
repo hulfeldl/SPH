@@ -8,8 +8,8 @@
 //============================================================================
 
 
-#include "param.inc"
-#include "eos.cpp"
+#include "../.old/eos.cpp"
+#include "../.old/param.inc"
 
 void int_force(	const int itimestep,
 				const double dt,

@@ -49,19 +49,20 @@ void virt_part(	const int itimestep,
 	if (vp_input){
 
 		std::ifstream xv_file, state_file, other_file;
-		xv_file.open(	"../data/xv_vp.dat",	ios::in | ios::binary );
-		state_file.open("../data/state_vp.dat",	ios::in | ios::binary );
-		other_file.open("../data/other_vp.dat",	ios::in | ios::binary );
+		xv_file.open(	"../data/xv_vp.dat",	std::ios::in | std::ios::binary );
+		state_file.open("../data/state_vp.dat",	std::ios::in | std::ios::binary );
+		other_file.open("../data/other_vp.dat",	std::ios::in | std::ios::binary );
 
 		// Read ntotal and dim
-		xv_file.write( reinterpret_cast<char*>(&nvirt),sizeof(nvirt) );
-		xv_file.write( reinterpret_cast<char*>(&dim),	sizeof(dim) );
+		int ntotal, dim;
+		xv_file.read( reinterpret_cast<char*>(&ntotal),sizeof(ntotal) );
+		xv_file.read( reinterpret_cast<char*>(&dim),	sizeof(dim) );
 
-		state_file.write( reinterpret_cast<char*>(&nnvirt),	sizeof(nvirt) );
-		state_file.write( reinterpret_cast<char*>(&dim),	sizeof(dim) );
+		state_file.read( reinterpret_cast<char*>(&ntotal),	sizeof(ntotal) );
+		state_file.read( reinterpret_cast<char*>(&dim),	sizeof(dim) );
 
-		other_file.write( reinterpret_cast<char*>(&nvirt),	sizeof(nvirt) );
-		other_file.write( reinterpret_cast<char*>(&dim),	sizeof(dim) );
+		other_file.read( reinterpret_cast<char*>(&ntotal),	sizeof(ntotal) );
+		other_file.read( reinterpret_cast<char*>(&dim),	sizeof(dim) );
 
 
 		for( int j = 0; j < nvirt; j++ ){
@@ -155,9 +156,9 @@ void virt_part(	const int itimestep,
 
 		std::ofstream xv_file, state_file, other_file;
 
-		xv_file.open(	"../data/xv_vp.dat",	ios::out | ios::trunc | ios::binary	);
-		state_file.open("../data/state_vp.dat",	ios::out | ios::trunc | ios::binary );
-		other_file.open("../data/other_vp.dat",	ios::out | ios::trunc | ios::binary );
+		xv_file.open(	"../data/xv_vp.dat",	std::ios::out | std::ios::trunc | std::ios::binary	);
+		state_file.open("../data/state_vp.dat",	std::ios::out | std::ios::trunc | std::ios::binary );
+		other_file.open("../data/other_vp.dat",	std::ios::out | std::ios::trunc | std::ios::binary );
 
 		if( xv_file.is_open() && state_file.is_open() && other_file.is_open() ){
 

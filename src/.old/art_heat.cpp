@@ -25,7 +25,7 @@ void art_heat(	const int ntotal,
 				double dedt[]){
 
 //----------------------------------------------------------------------------
-// 	Subroutine to calculate the artificial heatlFulk, 1994, p, a-17)
+// 	Subroutine to calculate the artificial heatl Fulk, 1994, p, a-17)
 
 // 	ntotal	: Number of particles								[in]
 // 	hsml	: Smoothing Length									[in]
@@ -59,8 +59,8 @@ void art_heat(	const int ntotal,
 	}
 
 	for (int k = 0; k < niac; k++){
-		int i = pair_i(k);
-		int j = pair_j(k);
+		const int i = pair_i(k);
+		const int j = pair_j(k);
 
 		for(int d = 0; d < dim; d++){
 			dvx(d) = vx(d,j) - vx(d,i);
@@ -76,8 +76,9 @@ void art_heat(	const int ntotal,
 	}
 
 	for(int k = 0; k < niac; k++){
-		int i = pair__i (k);
-		int j = pair_j(k);
+
+		const int i = pair_i (k);
+		const int j = pair_j(k);
 
 		mhsml	= 0.5*(hsml(i)+hsml(j));
 		mrho 	= 0.5*(rho(i) + rho(j));

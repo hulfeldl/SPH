@@ -22,7 +22,7 @@ void av_vel(const int ntotal,
 
 //----------------------------------------------------------------------------
 // 	Subroutine to calculate the average velocity to correct velocity
-// 	for preventing.penetration (monaghan, 1992)
+// 	for preventing penetration (Monaghan, 1992)
 
 // 	ntotal	: Number of particles 							[in]
 // 	mass	: Particle masses								[in]
@@ -37,7 +37,7 @@ void av_vel(const int ntotal,
 
 	double vcc, dvx(dim), epsilon;
 
-	// epsilon --- a small constants chosen by experence, may lead to instability.
+	// epsilon --- a small constants chosen by experience, may lead to instability.
 	// for example, for the 1 dimensional shock tube problem, the E <= 0.3
 
 	epsilon = 0.3;

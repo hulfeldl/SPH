@@ -13,17 +13,6 @@
 
 #include "param.inc"
 
-void output(const double x[][],
-			const double vx[][],
-			const double mass[],
-			const double rho[],
-			const double p[],
-			const double u[],
-			const double c[],
-			const int itype[],
-			const double hsml[],
-			const int ntotal ){
-
 //----------------------------------------------------------------------------
 //	Subroutine for saving particle information to external disk file
 
@@ -38,10 +27,20 @@ void output(const double x[][],
 //	hsml 	: smoothing lengths of particles	[in]
 //	ntotal 	: total particle number				[in]
 //----------------------------------------------------------------------------
+void output(const double x[][],
+			const double vx[][],
+			const double mass[],
+			const double rho[],
+			const double p[],
+			const double u[],
+			const double c[],
+			const int itype[],
+			const double hsml[],
+			const int ntotal ){
 
 	std::ofstream xv_file, state_file, other_file;
 
-	xv_file.open(	"../data/f_xv.dat",		ios::out | ios::trunc | ios::binary	 );
+	xv_file.open(	"../data/f_xv.dat",		std::ios::out | ios::trunc | ios::binary	 );
 	state_file.open("../data/f_state.dat",	ios::out | ios::trunc | ios::binary	 );
 	other_file.open("../data/f_other.dat",	ios::out | ios::trunc | ios::binary	 );
 

@@ -16,7 +16,7 @@
 void direct_find( 	const int itimestep,
 					const int ntotal,
 					const double hsml[],
-					const double x[],
+					const double x[][],
 					int niac,
 					int pair_i[],
 					int pair_j[],
@@ -42,12 +42,7 @@ void direct_find( 	const int itimestep,
 //	countiac	: Number of neighboring particles					[out]
 //----------------------------------------------------------------------------
 
-
-	int itimestep, ntotal,niac,pair_i(max_interaction),pair_j(max_interaction), countiac(maxn);
-
-	double hsml(maxn), x(dim,maxn), w(max_interaction), dwdx(dim,max_interaction);
-
-	int i, j, d, sumiac, maxiac, miniac, noiac,maxp, minp, scale_k;
+	int sumiac, maxiac, miniac, noiac,maxp, minp, scale_k;
 
 	double dxiac(dim), driac, r, mhsml, tdwdx(dim);
 

@@ -10,14 +10,14 @@
 
 #include<math.h>
 
-#include "param.inc"
+#include "../.old/param.inc"
 
 void ext_force(	const int ntotal,
 				const double mass[],
 				const double x[][],
 				const int niac,
 				const int pair_i[],
-				const int pair__j[],
+				const int pair_j[],
 				const int itype[],
 				const double hsml,
 				double dvxdt[][] ){
@@ -59,8 +59,8 @@ void ext_force(	const int ntotal,
 
 	for( int k = 0; k < niac; k++ ){
 
-		const int i = pair_i(k);
-		const int j = pair_j(k);
+		const int i = pair_i[k];
+		const int j = pair_j[k];
 
 		if( itype(i) > 0 && itype(j) < O ){
 			rr = .0;
