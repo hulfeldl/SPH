@@ -1,0 +1,112 @@
+{
+	"__DESCRIPTION__": [
+        "1D ShockTube Problem",
+        ""
+   	],
+    "simulation" : {
+    	"n timesteps"       		: 6001,
+        "Dimension"					: 2,
+        "Problem type"				: "ShearCavity"
+  	},
+  	"output" : {
+  		"SPH" : {
+  			"print" 			: "All",
+  			"step" 				: 100,
+  			"save interval"		: 100,
+  			"monitor particles"	: [0, 20, 100]
+  		}
+  	},
+  	"time step control": {
+    	"type"          : "fixed",
+        "dt"            : 5e-3,
+        "scaling"       : [ [0, 1.0] ]
+	},
+    "algorithm": {
+    	"type"	: "HYBRID",
+        "SPH"	: {
+        	"type" 							: "SPH",
+        	"Particles" 					: ["Physical" , "Virtual"],
+        	"Maximal Particles" 			: 1200,
+        	"Max. Int. per Particle"		: 100,
+        	"Particle Approximation" 		: "Algorithm_2",
+        	"Nearest Neighbour Search"		: "DirectSearch",
+        	"Smoothing Length Evolution"	: "None",
+        	"Smoothing Kernel" 				: "CubicSpline",
+        	"Density Calculation" 			: "SummationDensity",
+        	"Velocity Averaging"			: "None",
+        	"Artificial"					: [ "Viscosity" , "Heat" ],
+        	"External Forces" 				: ["Boundary Force"],
+        	"PDEs" 							: "Euler Equations"
+      	},
+      	"RGF" : {
+      		"type"	: "HYBRID",
+      		"DSMC" : {
+      			"type" : "DSMC"
+      		},
+       	 	"FOKKER-PLANCK" : {
+        		"type" : "FOKKER-PLANCK"
+     		}      		
+      	}
+
+ 	},
+    "simulation box": {
+    	"origin": [ -10.0 ],
+        "extent": [ 20 ]
+ 	},
+    "gas model": {
+    	"type"      : "VSS",
+        "species" 	: "nitrogen",
+        "diatomic"	: true,
+        "m"         : 46.5e-27,
+        "mu_ref" 	: 1.656e-5,
+        "alpha" 	: 1.36,
+        "omega" 	: 0.74,
+        "T_ref" 	: 273.0,
+        "gamma"     : 1.4,
+        "Zrot_inf"	: 18,
+        "Trot_ref"	: 91.5,
+        "Cvib_1"	: 9.1,
+        "Cvib_2"	: 220.0,
+        "Tvib_ref"	: 3340.0
+ 	},
+    "initialization" : {
+    	"Physical" 	: "Generate",
+    	"Virtual" 	: "Generate"
+   	},        
+	"boundary": [
+    	{
+        	"name"		: "Meteoroid",
+            "condition"	: "surfaceCond",
+            "state"		: "surfaceState",
+            "geometry"	: {
+            	"type"	: "sphere_collection",
+                "file"	: {
+                	"format"        : "tecplot",
+                 	"name"          : "ParticlesIN.plt",
+                    "tol"           : 1e-6,
+                    "flip normals"  : false
+                }
+         	},
+            "viewfactors": {
+            	"compute viewfactors": true,
+                "points per shape": 100000,
+                "rays per point": 1
+        	},
+            "sample"	: {
+            	"averaging": {
+                	"type": "switched",
+                    "switch": 3000,
+                    "first" : {"type" : "none" },
+                    "second" : {"type" : "arithmetic" , "skip" : 0  }
+             	}
+        	},
+            "output"	: {
+            	"first"     : 6000,
+                "interval"  : 500
+        	}
+    	}
+	]
+}
+
+
+
